@@ -36,7 +36,8 @@ tickerDf = tickerData.history(period='1d', start=str(start_date), end=str(end_da
 st.bar_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
 
-arr = np.random.normal(1, 1, size=100)
+#arr = np.random.normal(1, 1, size=100)
+arr = tickerDF.Close
 fig, ax = plt.subplots()
 ax.hist(arr, bins=20)
 st.pyplot(fig)
