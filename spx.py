@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-#from PIL import Image
 import datetime
 
 
@@ -37,9 +36,7 @@ st.bar_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
 
 #arr = np.random.normal(1, 1, size=100)
-arr = tickerDF.Close
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
+fig = plt.hist(TickerDf.Close)
 st.pyplot(fig)
 
 
@@ -52,11 +49,7 @@ ticker_described = tickerDf.describe()
 ticker_described.reset_index(level=0, inplace=True)
 
 ticker_described.columns = ['feature']+list(ticker_described.columns)[1:]
-#st.write(['feature']+list(ticker_described.columns))
+
 
 st.write(ticker_described)
 st.markdown(filedownload(ticker_described), unsafe_allow_html=True)
-
-
-##image = Image.open('logo-app2.jpg')
-##st.image(image, use_column_width=False, width=400)
