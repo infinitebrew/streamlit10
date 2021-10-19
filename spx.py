@@ -31,7 +31,7 @@ st.write("""### Current symbol:
 tickerData = yf.Ticker(symbol)
 tickerDf = tickerData.history(period='1d', start=str(start_date), end=str(end_date))
 
-st.line_chart(tickerDf.Close)
+st.bar_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)	
 
 
