@@ -2,6 +2,7 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+#import seaborn as sns
 import numpy as np
 import datetime
 
@@ -13,7 +14,7 @@ st.write("""
 st.sidebar.header("Enter symbol")
 
 
-tickerSymbol = 'GOOGL'
+tickerSymbol = 'SPY'
 symbol = st.sidebar.text_area("", tickerSymbol)
 
 st.sidebar.header('Enter dates')
@@ -35,9 +36,13 @@ tickerDf = tickerData.history(period='1d', start=str(start_date), end=str(end_da
 st.bar_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
 
-arr = np.random.normal(1, 1, size=100)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
+tickerDF['% change'] = (tickerDF['Close'] - tickerDF['Open']) / tickerDF['Open'] * 100
+#fig = sns.displot(tickerDF['% change'], bins=50, kde=True)
+fig = plt.hist(tickerDF['% change'], bins=50)
+
+#arr = np.random.normal(1, 1, size=100)
+#fig, ax = plt.subplots()
+#ax.hist(arr, bins=20)
 st.pyplot(fig)
 
 
