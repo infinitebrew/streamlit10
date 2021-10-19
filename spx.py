@@ -36,9 +36,9 @@ tickerDf = tickerData.history(period='1d', start=str(start_date), end=str(end_da
 st.bar_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
 
-tickerDF['% change'] = (tickerDF.Close - tickerDF.Open) / tickerDF.Open * 100
+tickerDf['% change'] = (tickerDf.Close - tickerDf.Open) / tickerDf.Open * 100
 #fig = sns.displot(tickerDF['% change'], bins=50, kde=True)
-fig = plt.hist(tickerDF['% change'], bins=50)
+fig = plt.hist(tickerDf['% change'], bins=50)
 
 #arr = np.random.normal(1, 1, size=100)
 #fig, ax = plt.subplots()
