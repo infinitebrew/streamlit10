@@ -1,6 +1,7 @@
 import yfinance as yf
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 #from PIL import Image
 import datetime
 
@@ -32,7 +33,11 @@ tickerData = yf.Ticker(symbol)
 tickerDf = tickerData.history(period='1d', start=str(start_date), end=str(end_date))
 
 st.bar_chart(tickerDf.Close)
-st.line_chart(tickerDf.Volume)	
+st.line_chart(tickerDf.Volume)
+
+fig, ax = plt.subplots()
+ax.hist(tickerDF.Close, bins=20)
+st.pyplot(fig)
 
 
 def filedownload(df):
