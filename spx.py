@@ -2,7 +2,7 @@ import yfinance as yf
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-#import seaborn as sns
+import seaborn as sns
 import numpy as np
 import datetime
 
@@ -37,14 +37,14 @@ st.line_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
 
 tickerDf['% change'] = (tickerDf.Close - tickerDf.Open) / tickerDf.Open * 100
-#fig = sns.displot(tickerDF['% change'], bins=50, kde=True)
+fig = sns.displot(tickerDF['% change'], bins=50, kde=True)
 #fig = plt.hist(tickerDf['% change'], bins=50)
 
 #arr = np.random.normal(1, 1, size=100)
 #fig, ax = plt.subplots()
 #ax.hist(arr, bins=20)
-#st.pyplot(fig)
-st.bar_chart(tickerDf['% change'])
+st.pyplot(fig)
+#st.bar_chart(tickerDf['% change'])
 
 def filedownload(df):
 	csv = df.to_csv()
